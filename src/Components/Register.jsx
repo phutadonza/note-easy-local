@@ -30,7 +30,7 @@ export default function Register() {
     const formEnt = Object.fromEntries(formData.entries())
 
     // ทำการส่งข้อมูลฟอร์มไปยังเซิร์ฟเวอร์
-    fetch('/api/note/register', {
+    fetch(baseUrl + '/api/note/register', {
       method: 'POST',
       body: JSON.stringify(formEnt),
       headers: { 'Content-Type': 'application/json' },

@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react'
 import reactlogo from '../assets/react.svg'
 import { userContext, userDataContext, dataContext } from '../App'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { baseUrl } from '../App'
 
 const Navbar = () => {
   const navigate = useNavigate()
@@ -10,7 +11,7 @@ const Navbar = () => {
   let [data, setData] = useContext(dataContext)
 
   useEffect(() => {
-    fetch('/api/note/sessionget')
+    fetch(baseUrl + '/api/note/sessionget')
       .then((res) => res.json())
       .then((result) => {
         //console.log(result)
@@ -27,7 +28,7 @@ const Navbar = () => {
     if (!window.confirm('Confirm logout')) {
       return
     }
-    fetch('/api/note/delete')
+    fetch(baseUrl + '/api/note/delete')
       .then((res) => res.text())
       .then((result) => {
         navigate('/login')

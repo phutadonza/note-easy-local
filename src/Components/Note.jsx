@@ -1,5 +1,5 @@
 import { useEffect, useContext, useRef, useState } from 'react'
-import { userContext } from '../App'
+import { baseUrl, userContext } from '../App'
 import { useNavigate } from 'react-router-dom'
 
 function Note() {
@@ -12,7 +12,7 @@ function Note() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch('/api/note/sessionget')
+    fetch(baseUrl + '/api/note/sessionget')
       .then((res) => res.json())
       .then((result) => {
         setData_id(result.cus_id)
@@ -22,7 +22,7 @@ function Note() {
   }, [])
 
   useEffect(() => {
-    fetch('/api/historylist')
+    fetch(baseUrl + '/api/historylist')
       .then((res) => res.json())
       .then((result) => {
         setHistoryData(result)
@@ -37,7 +37,7 @@ function Note() {
     //console.log(data.cus_id)
     //console.log(combinedData)
 
-    fetch('/api/note/createnote', {
+    fetch(baseUrl + '/api/note/createnote', {
       method: 'POST',
       body: JSON.stringify(formEnt),
       headers: { 'Content-Type': 'application/json' },

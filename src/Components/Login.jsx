@@ -23,7 +23,7 @@ export default function Login() {
     const formEnt = Object.fromEntries(formData.entries())
 
     //console.log(formEnt)
-    fetch('/api/note/login', {
+    fetch(baseUrl + '/api/note/login', {
       method: 'POST',
       body: JSON.stringify(formEnt),
       headers: { 'Content-Type': 'application/json' },
